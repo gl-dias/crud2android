@@ -245,10 +245,7 @@ A geração de IDs usa uma variável `proximo_id` global sem lock. Em ambiente m
 
 ## Imagens
 
-### API rodando
 ![Swagger UI](imagens/image.png)
-
-### App Android
 ![Tela principal](imagens/image%20copy.png)
 ![Lista de produtos](imagens/image%20copy%202.png)
 ![Adicionando produto](imagens/image%20copy%203.png)
