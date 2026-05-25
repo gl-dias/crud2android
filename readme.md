@@ -45,6 +45,18 @@ crud2/
 │       │       └── item_produto.xml    # Layout de cada item da lista
 │       └── build.gradle.kts
 │
+├── imagens/
+|    ├── image.png
+|    ├── image copy.png
+|    ├── image copy 2.png
+|    ├── image copy 3.png
+|    ├── image copy 4.png
+|    ├── image copy 5.png
+|    ├── image copy 6.png
+|    ├── image copy 7.png
+|    └── image copy 8.png
+|
+|
 └── README.md
 ```
 
