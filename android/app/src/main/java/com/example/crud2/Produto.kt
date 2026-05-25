@@ -16,18 +16,12 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
-// =========================================================================
-// 1) MODELO
-// =========================================================================
 data class Produto(
     val id: Int? = null,
     val nome: String,
     val preco: Double
 )
 
-// =========================================================================
-// 2) RETROFIT
-// =========================================================================
 interface ApiService {
     @GET("produtos")
     suspend fun listar(): List<Produto>
@@ -43,8 +37,6 @@ interface ApiService {
 }
 
 object ApiClient {
-    // Emulador Android local:        "http://10.0.2.2:8000/"
-    // Celular físico na Wi-Fi:       "http://192.168.x.x:8000/"
     private const val BASE_URL = "http://10.0.2.2:8000/"
 
     val service: ApiService = Retrofit.Builder()
@@ -54,9 +46,6 @@ object ApiClient {
         .create(ApiService::class.java)
 }
 
-// =========================================================================
-// 3) ADAPTER — agora com dois callbacks: editar e deletar
-// =========================================================================
 class ProdutoAdapter(
     private val onEdit: (Produto) -> Unit,
     private val onDelete: (Produto) -> Unit

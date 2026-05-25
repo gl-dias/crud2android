@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         val btnAdicionar = findViewById<Button>(R.id.btnAdicionar)
         val recycler = findViewById<RecyclerView>(R.id.recycler)
 
-        // Agora o adapter recebe DOIS callbacks: onEdit (abre dialog) e onDelete
         adapter = ProdutoAdapter(
             onEdit = { produto -> mostrarDialogEdicao(produto) },
             onDelete = { produto -> deletar(produto) }
@@ -102,10 +101,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Abre um AlertDialog com 2 EditText pré-preenchidos para edição.
-     * Construído programaticamente para não precisar de outro arquivo XML.
-     */
     private fun mostrarDialogEdicao(produto: Produto) {
         val campoNome = EditText(this).apply {
             setText(produto.nome)
