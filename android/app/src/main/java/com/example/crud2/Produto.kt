@@ -13,14 +13,21 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
+// =========================================================================
+// 1) MODELO
+// =========================================================================
 data class Produto(
     val id: Int? = null,
     val nome: String,
     val preco: Double
 )
 
+// =========================================================================
+// 2) RETROFIT
+// =========================================================================
 interface ApiService {
     @GET("produtos")
     suspend fun listar(): List<Produto>
@@ -28,11 +35,16 @@ interface ApiService {
     @POST("produtos")
     suspend fun criar(@Body produto: Produto): Produto
 
+    @PUT("produtos/{id}")
+    suspend fun atualizar(@Path("id") id: Int, @Body produto: Produto): Produto
+
     @DELETE("produtos/{id}")
     suspend fun deletar(@Path("id") id: Int): Response<Unit>
 }
 
 object ApiClient {
+    // Emulador Android local:        "http://10.0.2.2:8000/"
+    // Celular físico na Wi-Fi:       "http://192.168.x.x:8000/"
     private const val BASE_URL = "http://10.0.2.2:8000/"
 
     val service: ApiService = Retrofit.Builder()
@@ -42,7 +54,11 @@ object ApiClient {
         .create(ApiService::class.java)
 }
 
+// =========================================================================
+// 3) ADAPTER — agora com dois callbacks: editar e deletar
+// =========================================================================
 class ProdutoAdapter(
+    private val onEdit: (Produto) -> Unit,
     private val onDelete: (Produto) -> Unit
 ) : RecyclerView.Adapter<ProdutoAdapter.VH>() {
 
@@ -56,6 +72,7 @@ class ProdutoAdapter(
     class VH(view: View) : RecyclerView.ViewHolder(view) {
         val txtNome: TextView = view.findViewById(R.id.txtNome)
         val txtPreco: TextView = view.findViewById(R.id.txtPreco)
+        val btnEditar: Button = view.findViewById(R.id.btnEditar)
         val btnDeletar: Button = view.findViewById(R.id.btnDeletar)
     }
 
@@ -69,6 +86,7 @@ class ProdutoAdapter(
         val produto = produtos[position]
         holder.txtNome.text = produto.nome
         holder.txtPreco.text = "R$ %.2f".format(produto.preco)
+        holder.btnEditar.setOnClickListener { onEdit(produto) }
         holder.btnDeletar.setOnClickListener { onDelete(produto) }
     }
 

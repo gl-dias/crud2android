@@ -28,9 +28,16 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar" />
+
+    <Button
         android:id="@+id/btnDeletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="X" />
 
 </LinearLayout>
