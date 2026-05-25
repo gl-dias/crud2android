@@ -253,3 +253,4 @@ A geração de IDs usa uma variável `proximo_id` global sem lock. Em ambiente m
 ![Validação de erro](imagens/image%20copy%205.png)
 ![Teste pelo Swagger](imagens/image%20copy%206.png)
 ![Estrutura no Android Studio](imagens/image%20copy%207.png)
+![Estrutura no Android Studio](imagens/image%20copy%208.png)
