@@ -241,3 +241,18 @@ A geração de IDs usa uma variável `proximo_id` global sem lock. Em ambiente m
 | "CLEARTEXT communication not permitted" | Faltou `usesCleartextTraffic="true"` no Manifest | Adicionar atributo no `<application>` |
 | Build falha pedindo `compileSdk` maior | Dependências exigem SDK mais novo | Atualizar `compileSdk = 36` no `build.gradle.kts (Module :app)` |
 
+---
+
+## Imagens
+
+### API rodando
+![Swagger UI](imagens/image.png)
+
+### App Android
+![Tela principal](imagens/image%20copy.png)
+![Lista de produtos](imagens/image%20copy%202.png)
+![Adicionando produto](imagens/image%20copy%203.png)
+![Após cadastro](imagens/image%20copy%204.png)
+![Validação de erro](imagens/image%20copy%205.png)
+![Teste pelo Swagger](imagens/image%20copy%206.png)
+![Estrutura no Android Studio](imagens/image%20copy%207.png)
